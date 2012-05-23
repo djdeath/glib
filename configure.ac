@@ -1106,7 +1106,10 @@ AS_IF([test $glib_native_win32 = yes], [
 			   ],[AC_MSG_RESULT([in -lresolv])
                               NETWORK_LIBS="-lresolv $NETWORK_LIBS"],
                            [LIBS="-lbind $save_libs"
-                            AC_TRY_LINK([#include <resolv.h>],
+                            AC_TRY_LINK([#include <sys/types.h>
+#include <netinet/in.h>
+#include <arpa/nameser.h>
+#include <resolv.h>],
                                         [res_query("test", 0, 0, (void *)0, 0);],
                                         [AC_MSG_RESULT([in -lbind])
                                          NETWORK_LIBS="-lbind $NETWORK_LIBS"],
