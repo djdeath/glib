@@ -37,7 +37,6 @@
 #include "gsocketaddress.h"
 #include "gsrvtarget.h"
 
-
 G_DEFINE_TYPE (GThreadedResolver, g_threaded_resolver, G_TYPE_RESOLVER)
 
 static void

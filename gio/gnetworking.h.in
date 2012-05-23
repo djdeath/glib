@@ -51,8 +51,10 @@
 #include <arpa/nameser.h>
 @NAMESER_COMPAT_INCLUDE@
 
+#ifndef __ANDROID__
 #ifndef T_SRV
 #define T_SRV 33
+#endif
 #endif
 
 #ifndef _PATH_RESCONF

@@ -39,7 +39,6 @@
 
 #include <stdlib.h>
 
-
 /**
  * SECTION:gresolver
  * @short_description: Asynchronous and cancellable DNS resolver

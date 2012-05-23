@@ -1071,18 +1071,18 @@ AS_IF([test $glib_native_win32 = yes], [
   AC_CHECK_HEADER([wspiapi.h], [WSPIAPI_INCLUDE="#include <wspiapi.h>"])
   AC_SUBST(WSPIAPI_INCLUDE)
 ], [
-  AC_MSG_CHECKING([if arpa/nameser_compat.h is needed])
-  AC_COMPILE_IFELSE([AC_LANG_PROGRAM([#include <sys/types.h>
-                                      #include <arpa/nameser.h>],
-                                     [int qclass = C_IN;])],
-                    [AC_MSG_RESULT([no])],
-                    [AC_COMPILE_IFELSE([AC_LANG_PROGRAM([#include <sys/types.h>
-                                                         #include <arpa/nameser.h>
-                                                         #include <arpa/nameser_compat.h>],
-                                                        [int qclass = C_IN;])],
-                                       [AC_MSG_RESULT([yes])
-                                        NAMESER_COMPAT_INCLUDE="#include <arpa/nameser_compat.h>"],
-                                       [AC_MSG_ERROR([could not compile test program either way])])])
+  dnl AC_MSG_CHECKING([if arpa/nameser_compat.h is needed])
+  dnl AC_COMPILE_IFELSE([AC_LANG_PROGRAM([#include <sys/types.h>
+  dnl                                     #include <arpa/nameser.h>],
+  dnl                                    [int qclass = C_IN;])],
+  dnl                   [AC_MSG_RESULT([no])],
+  dnl                   [AC_COMPILE_IFELSE([AC_LANG_PROGRAM([#include <sys/types.h>
+  dnl                                                        #include <arpa/nameser.h>
+  dnl                                                        #include <arpa/nameser_compat.h>],
+  dnl                                                       [int qclass = C_IN;])],
+  dnl                                      [AC_MSG_RESULT([yes])
+  dnl                                       NAMESER_COMPAT_INCLUDE="#include <arpa/nameser_compat.h>"],
+  dnl                                      [AC_MSG_ERROR([could not compile test program either way])])])
   AC_SUBST(NAMESER_COMPAT_INCLUDE)
 
   # We can't just use AC_CHECK_FUNC/AC_CHECK_LIB here. Bug 586150

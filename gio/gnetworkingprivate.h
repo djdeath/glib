@@ -41,6 +41,23 @@ gint g_socket (gint     domain,
                gint     protocol,
                GError **error);
 
+
+#ifdef __ANDROID__
+
+#include "nameser_compat.h"
+
+int res_init(void);
+
+int res_query(const char *dname, int class, int type,
+              unsigned char *answer, int anslen);
+
+int dn_expand(unsigned char *msg, unsigned char *eomorig,
+              unsigned char *comp_dn, char *exp_dn,
+              int length);
+
+#endif /* __ANDROID__ */
+
+
 G_END_DECLS
 
 #endif /* __G_NETWORKINGPRIVATE_H__ */
