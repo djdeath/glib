@@ -2022,10 +2022,10 @@ AS_IF([ test x"$have_threads" = xposix], [
   # First we test for posix, whether -pthread or -pthreads do the trick as 
   # both CPPFLAG and LIBS. 
   # One of them does for most gcc versions and some other platforms/compilers
-  # too and could be considered as the canonical way to go. 
+  # too and could be considered as the canonical way to go.
   case $host in
-    *-*-cygwin*|*-*-darwin*)
-       # skip cygwin and darwin -pthread or -pthreads test
+    *-*-cygwin*|*-*-darwin*|*android*)
+       # skip cygwin/darwin/android -pthread or -pthreads test
        ;;
     *-solaris*)
       # These compiler/linker flags work with both Sun Studio and gcc
@@ -2325,13 +2325,13 @@ fi
 
 #
 # Hack to deal with:
-# 
+#
 #  a) GCC < 3.3 for Linux doesn't include -lpthread when
 #     building shared libraries with linux.
 #  b) FreeBSD doesn't do this either.
 #
 case $host in
-  *-*-freebsd*|*-*-linux*)
+  *-*-freebsd*|*-*-linux*|*-*-android*)
     G_THREAD_LIBS_FOR_GTHREAD="`echo $G_THREAD_LIBS | sed s/-pthread/-lpthread/`"
     ;;
   *-*-openbsd*)
