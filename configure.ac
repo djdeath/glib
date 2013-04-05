@@ -163,6 +163,11 @@ case $host in
     glib_os_linux=yes
     ;;
 esac
+case $host in
+  *android*)
+    glib_os_android=yes
+    ;;
+esac
 
 AC_MSG_RESULT([$glib_native_win32])
 
@@ -194,6 +199,7 @@ AM_CONDITIONAL(OS_UNIX, [test "$glib_native_win32" != "yes"])
 AM_CONDITIONAL(OS_LINUX, [test "$glib_os_linux" = "yes"])
 AM_CONDITIONAL(OS_CARBON, [test "$glib_have_carbon" = "yes"])
 AM_CONDITIONAL(OS_COCOA, [test "$glib_have_cocoa" = "yes"])
+AM_CONDITIONAL(OS_ANDROID, [test "$glib_os_android" = "yes"])
 
 AS_IF([test "$glib_native_win32" = "yes"], [
   AC_CHECK_TOOL(WINDRES, windres, no)
@@ -221,7 +227,7 @@ if test "x$glib_have_cocoa" = "xyes"; then
 fi
 
 gl_GLIBC21
-AS_IF([test "x$GLIBC21" = "xyes"], [
+AS_IF([test "x$GLIBC21" = "xyes" || test "x$glib_os_android" = "xyes"], [
   AC_DEFINE([_GNU_SOURCE], 1, [Make all glibc extensions visible])
 ])
 
