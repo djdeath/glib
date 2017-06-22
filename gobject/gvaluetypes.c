@@ -895,12 +895,11 @@ g_value_get_ulong (const GValue *value)
 }
 
 /**
- * g_value_get_int64:
+ * g_value_set_int64:
  * @value: a valid #GValue of type %G_TYPE_INT64
+ * @v_int64: 64bit integer value to be set
  *
- * Get the contents of a %G_TYPE_INT64 #GValue.
- *
- * Returns: 64bit integer contents of @value
+ * Set the contents of a %G_TYPE_INT64 #GValue to @v_int64.
  */
 void
 g_value_set_int64 (GValue *value,
@@ -912,11 +911,12 @@ g_value_set_int64 (GValue *value,
 }
 
 /**
- * g_value_set_int64:
+ * g_value_get_int64:
  * @value: a valid #GValue of type %G_TYPE_INT64
- * @v_int64: 64bit integer value to be set
  *
- * Set the contents of a %G_TYPE_INT64 #GValue to @v_int64.
+ * Get the contents of a %G_TYPE_INT64 #GValue.
+ *
+ * Returns: 64bit integer contents of @value
  */
 gint64
 g_value_get_int64 (const GValue *value)
